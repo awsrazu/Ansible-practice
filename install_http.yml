@@ -9,9 +9,11 @@
       name: '*'
       state: latest  
 
-  - name: Install httpd package 
+  - name: Install httpd and php package 
     package:
-      name: httpd
+      name:
+        - httpd
+        - php
       state: present
 
   - name: Start and enable httpd service
@@ -19,11 +21,6 @@
       name: httpd
       state: started
       enabled: yes
-
-  - name: Install php for PHP support
-    yum:
-      name: php
-      state: present
 
   - name: Restart Apache to apply changes
     service:
